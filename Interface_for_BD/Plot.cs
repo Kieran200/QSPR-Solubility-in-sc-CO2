@@ -10,6 +10,7 @@ using System.Transactions;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Interface_for_BD
 {
@@ -22,11 +23,59 @@ namespace Interface_for_BD
         private double solub = 0;
         Equation eq = new Equation();
 
+        private void jpegToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sfd.Filter = "JPeg Image|*.jpg";
+            sfd.ShowDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                chart1.SaveImage(sfd.FileName, ChartImageFormat.Jpeg);
+            }
+        }
+
         public Plot()
         {
             InitializeComponent();
             Init_Chart();
             Points();
+            
+            //заметка
+            TextAnnotation TA1 = new TextAnnotation();
+            TA1.Text += "Вещества:";//Equation.equation;
+            for (int i = 0; i < Equation.LSubName.Count; i++)
+            {
+                TA1.Text += "\n" + Equation.LSubName[i];
+            }
+            TA1.Text += "\n";
+            TA1.Text += "Дескрипторы:";
+            for (int i = 0; i < Equation.LDescName.Count; i++)
+            {
+                TA1.Text += "\n" + Equation.LDescName[i];
+            }
+            TA1.Text += "\n";
+            TA1.Text += "\n";
+            TA1.Text += "Уравнение:";
+            TA1.Text += "\n";
+            for (int i = 0; i < Equation.LDesc.Count; i++)
+            {
+                TA1.Text += Equation.FinalCoefList[i];
+                TA1.Text += " * ";
+                TA1.Text += Equation.LDescName[i];
+                TA1.Text += " + ";
+                TA1.Text += "\n";
+            }
+            if (Equation.FinalCoefList.Count != 0)
+            {
+                TA1.Text += Equation.FinalCoefList[Equation.FinalCoefList.Count - 2];
+                TA1.Text += " * p";
+                TA1.Text += "\n";
+                TA1.Text += Equation.FinalCoefList[Equation.FinalCoefList.Count - 1];
+                TA1.Text += " * 1/T";
+            }
+
+            TA1.AnchorX = 85;
+            TA1.AnchorY = 100;
+            chart1.Annotations.Add(TA1);
         }
         public void Init_Chart()
         {
@@ -84,7 +133,7 @@ namespace Interface_for_BD
                 for (int k = 1; k <= count; k++)
                 {
                     solub = solub_clone;
-                    string query_eq = string.Format("SELECT TOP({1}) Points.Pressure, Points.Temperature, Points.Value FROM Experiments, Points, Substances WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} EXCEPT SELECT TOP({2}) Points.Pressure, Points.Temperature, Points.Value FROM Experiments, Points, Substances WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0}", Equation.LSub[i], k, k - 1);
+                    string query_eq = string.Format("SELECT TOP({1})  Experiments.Id, Points.Id, Points.Pressure, Points.Temperature, Points.Value FROM Experiments, Points, Substances WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} EXCEPT SELECT TOP({2})  Experiments.Id, Points.Id, Points.Pressure, Points.Temperature, Points.Value FROM Experiments, Points, Substances WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0}", Equation.LSub[i], k, k - 1);
                     SqlCommand command3 = new SqlCommand(query_eq, connection);
                     SqlDataReader reader3 = command3.ExecuteReader();
 
@@ -92,10 +141,10 @@ namespace Interface_for_BD
                     {
                         while (reader3.Read())
                         {
-                            solub += Convert.ToDouble(reader3.GetValue(0)) * Equation.FinalCoefList[Equation.FinalCoefList.Count - 2];
-                            solub += (1 / Convert.ToDouble(reader3.GetValue(1))) * Equation.FinalCoefList[Equation.FinalCoefList.Count - 1];
-                            list_of_x.Add(solub);
-                            list_of_y.Add(Convert.ToDouble(reader3.GetValue(2)));
+                            solub += Convert.ToDouble(reader3.GetValue(2)) * Equation.FinalCoefList[Equation.FinalCoefList.Count - 2];
+                            solub += (1 / Convert.ToDouble(reader3.GetValue(3))) * Equation.FinalCoefList[Equation.FinalCoefList.Count - 1];
+                            list_of_x.Add(Convert.ToDouble(reader3.GetValue(4))); 
+                            list_of_y.Add(solub);
                         }
                     }
                 }

@@ -149,7 +149,6 @@ C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.csproj.AssemblyReference.cache
-C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.csproj.SuggestedBindingRedirects.cache
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.Equation.resources
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.Full_Table.resources
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.Main_Form.resources
@@ -160,3 +159,4 @@ C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.exe
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.pdb
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.Plot.resources
+C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.csproj.ResolveComReference.cache

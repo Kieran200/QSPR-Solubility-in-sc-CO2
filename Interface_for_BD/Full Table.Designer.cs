@@ -42,49 +42,59 @@ namespace Interface_for_BD
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Full_Table_View = new System.Windows.Forms.DataGridView();
+            this.dgvDescriptorsView = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name_of_descriptor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_table_view = new System.Windows.Forms.Button();
+            this.btnTableView = new System.Windows.Forms.Button();
             this.substancesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dB_Descriptors_1DataSet = new Interface_for_BD.DB_Descriptors_1DataSet();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btn_table_view_2 = new System.Windows.Forms.Button();
-            this.cb_sub_name_2 = new System.Windows.Forms.ComboBox();
+            this.btnViewCharacteristics = new System.Windows.Forms.Button();
+            this.cbSubstancesNameDesc = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.Exp_view = new System.Windows.Forms.DataGridView();
+            this.dgvExperimentsView = new System.Windows.Forms.DataGridView();
             this.Exp_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Solubility = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Temperature = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pressure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cb_sub_name = new System.Windows.Forms.ComboBox();
+            this.cbSubstancesNameExp = new System.Windows.Forms.ComboBox();
+            this.Enter_Data = new System.Windows.Forms.TabPage();
             this.substancesTableAdapter = new Interface_for_BD.DB_Descriptors_1DataSetTableAdapters.SubstancesTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.Full_Table_View)).BeginInit();
+            this.dgvEnterData = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbSubstancesNameEntrerData = new System.Windows.Forms.ComboBox();
+            this.btnEnterData = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDescriptorsView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.substancesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dB_Descriptors_1DataSet)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Exp_view)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExperimentsView)).BeginInit();
+            this.Enter_Data.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEnterData)).BeginInit();
             this.SuspendLayout();
             // 
-            // Full_Table_View
+            // dgvDescriptorsView
             // 
-            this.Full_Table_View.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            this.Full_Table_View.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Full_Table_View.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Full_Table_View.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDescriptorsView.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.dgvDescriptorsView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvDescriptorsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDescriptorsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Name_of_descriptor,
             this.Value});
-            this.Full_Table_View.Location = new System.Drawing.Point(6, 6);
-            this.Full_Table_View.Name = "Full_Table_View";
-            this.Full_Table_View.RowHeadersWidth = 51;
-            this.Full_Table_View.RowTemplate.Height = 24;
-            this.Full_Table_View.Size = new System.Drawing.Size(756, 342);
-            this.Full_Table_View.TabIndex = 0;
+            this.dgvDescriptorsView.Location = new System.Drawing.Point(6, 6);
+            this.dgvDescriptorsView.Name = "dgvDescriptorsView";
+            this.dgvDescriptorsView.RowHeadersWidth = 51;
+            this.dgvDescriptorsView.RowTemplate.Height = 24;
+            this.dgvDescriptorsView.Size = new System.Drawing.Size(756, 342);
+            this.dgvDescriptorsView.TabIndex = 0;
             // 
             // Id
             // 
@@ -107,17 +117,17 @@ namespace Interface_for_BD
             this.Value.Name = "Value";
             this.Value.Width = 125;
             // 
-            // btn_table_view
+            // btnTableView
             // 
-            this.btn_table_view.BackColor = System.Drawing.Color.AliceBlue;
-            this.btn_table_view.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_table_view.Location = new System.Drawing.Point(6, 355);
-            this.btn_table_view.Name = "btn_table_view";
-            this.btn_table_view.Size = new System.Drawing.Size(164, 47);
-            this.btn_table_view.TabIndex = 1;
-            this.btn_table_view.Text = "Показать значения растворимости";
-            this.btn_table_view.UseVisualStyleBackColor = false;
-            this.btn_table_view.Click += new System.EventHandler(this.btn_table_view_Click);
+            this.btnTableView.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnTableView.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTableView.Location = new System.Drawing.Point(6, 355);
+            this.btnTableView.Name = "btnTableView";
+            this.btnTableView.Size = new System.Drawing.Size(164, 47);
+            this.btnTableView.TabIndex = 1;
+            this.btnTableView.Text = "Показать значения растворимости";
+            this.btnTableView.UseVisualStyleBackColor = false;
+            this.btnTableView.Click += new System.EventHandler(this.btn_table_view_Click);
             // 
             // dB_Descriptors_1DataSet
             // 
@@ -128,6 +138,7 @@ namespace Interface_for_BD
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.Enter_Data);
             this.tabControl1.Location = new System.Drawing.Point(12, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -136,9 +147,9 @@ namespace Interface_for_BD
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btn_table_view_2);
-            this.tabPage1.Controls.Add(this.cb_sub_name_2);
-            this.tabPage1.Controls.Add(this.Full_Table_View);
+            this.tabPage1.Controls.Add(this.btnViewCharacteristics);
+            this.tabPage1.Controls.Add(this.cbSubstancesNameDesc);
+            this.tabPage1.Controls.Add(this.dgvDescriptorsView);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -147,34 +158,34 @@ namespace Interface_for_BD
             this.tabPage1.Text = "Значения дескрипторов";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // btn_table_view_2
+            // btnViewCharacteristics
             // 
-            this.btn_table_view_2.BackColor = System.Drawing.Color.AliceBlue;
-            this.btn_table_view_2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_table_view_2.Location = new System.Drawing.Point(6, 355);
-            this.btn_table_view_2.Name = "btn_table_view_2";
-            this.btn_table_view_2.Size = new System.Drawing.Size(164, 47);
-            this.btn_table_view_2.TabIndex = 5;
-            this.btn_table_view_2.Text = "Показать характеристики";
-            this.btn_table_view_2.UseVisualStyleBackColor = false;
-            this.btn_table_view_2.Click += new System.EventHandler(this.btn_table_view_2_Click);
+            this.btnViewCharacteristics.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnViewCharacteristics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnViewCharacteristics.Location = new System.Drawing.Point(6, 355);
+            this.btnViewCharacteristics.Name = "btnViewCharacteristics";
+            this.btnViewCharacteristics.Size = new System.Drawing.Size(164, 47);
+            this.btnViewCharacteristics.TabIndex = 5;
+            this.btnViewCharacteristics.Text = "Показать характеристики";
+            this.btnViewCharacteristics.UseVisualStyleBackColor = false;
+            this.btnViewCharacteristics.Click += new System.EventHandler(this.btn_table_view_2_Click);
             // 
-            // cb_sub_name_2
+            // cbSubstancesNameDesc
             // 
-            this.cb_sub_name_2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cb_sub_name_2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_sub_name_2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cb_sub_name_2.FormattingEnabled = true;
-            this.cb_sub_name_2.Location = new System.Drawing.Point(231, 366);
-            this.cb_sub_name_2.Name = "cb_sub_name_2";
-            this.cb_sub_name_2.Size = new System.Drawing.Size(360, 24);
-            this.cb_sub_name_2.TabIndex = 4;
+            this.cbSubstancesNameDesc.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbSubstancesNameDesc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubstancesNameDesc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbSubstancesNameDesc.FormattingEnabled = true;
+            this.cbSubstancesNameDesc.Location = new System.Drawing.Point(231, 366);
+            this.cbSubstancesNameDesc.Name = "cbSubstancesNameDesc";
+            this.cbSubstancesNameDesc.Size = new System.Drawing.Size(360, 24);
+            this.cbSubstancesNameDesc.TabIndex = 4;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.Exp_view);
-            this.tabPage2.Controls.Add(this.cb_sub_name);
-            this.tabPage2.Controls.Add(this.btn_table_view);
+            this.tabPage2.Controls.Add(this.dgvExperimentsView);
+            this.tabPage2.Controls.Add(this.cbSubstancesNameExp);
+            this.tabPage2.Controls.Add(this.btnTableView);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -183,21 +194,21 @@ namespace Interface_for_BD
             this.tabPage2.Text = "Экспериментальные точки";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // Exp_view
+            // dgvExperimentsView
             // 
-            this.Exp_view.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            this.Exp_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Exp_view.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvExperimentsView.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.dgvExperimentsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExperimentsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Exp_Id,
             this.Solubility,
             this.Temperature,
             this.Pressure});
-            this.Exp_view.Location = new System.Drawing.Point(6, 6);
-            this.Exp_view.Name = "Exp_view";
-            this.Exp_view.RowHeadersWidth = 51;
-            this.Exp_view.RowTemplate.Height = 24;
-            this.Exp_view.Size = new System.Drawing.Size(756, 342);
-            this.Exp_view.TabIndex = 0;
+            this.dgvExperimentsView.Location = new System.Drawing.Point(5, 6);
+            this.dgvExperimentsView.Name = "dgvExperimentsView";
+            this.dgvExperimentsView.RowHeadersWidth = 51;
+            this.dgvExperimentsView.RowTemplate.Height = 24;
+            this.dgvExperimentsView.Size = new System.Drawing.Size(756, 342);
+            this.dgvExperimentsView.TabIndex = 0;
             // 
             // Exp_Id
             // 
@@ -227,22 +238,103 @@ namespace Interface_for_BD
             this.Pressure.Name = "Pressure";
             this.Pressure.Width = 125;
             // 
-            // cb_sub_name
+            // cbSubstancesNameExp
             // 
-            this.cb_sub_name.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cb_sub_name.DisplayMember = "Name";
-            this.cb_sub_name.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_sub_name.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cb_sub_name.FormattingEnabled = true;
-            this.cb_sub_name.Location = new System.Drawing.Point(231, 366);
-            this.cb_sub_name.Name = "cb_sub_name";
-            this.cb_sub_name.Size = new System.Drawing.Size(360, 24);
-            this.cb_sub_name.TabIndex = 3;
-            this.cb_sub_name.ValueMember = "Id";
+            this.cbSubstancesNameExp.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbSubstancesNameExp.DisplayMember = "Name";
+            this.cbSubstancesNameExp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubstancesNameExp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbSubstancesNameExp.FormattingEnabled = true;
+            this.cbSubstancesNameExp.Location = new System.Drawing.Point(231, 366);
+            this.cbSubstancesNameExp.Name = "cbSubstancesNameExp";
+            this.cbSubstancesNameExp.Size = new System.Drawing.Size(360, 24);
+            this.cbSubstancesNameExp.TabIndex = 3;
+            this.cbSubstancesNameExp.ValueMember = "Id";
+            // 
+            // Enter_Data
+            // 
+            this.Enter_Data.Controls.Add(this.dgvEnterData);
+            this.Enter_Data.Controls.Add(this.cbSubstancesNameEntrerData);
+            this.Enter_Data.Controls.Add(this.btnEnterData);
+            this.Enter_Data.Location = new System.Drawing.Point(4, 25);
+            this.Enter_Data.Name = "Enter_Data";
+            this.Enter_Data.Padding = new System.Windows.Forms.Padding(3);
+            this.Enter_Data.Size = new System.Drawing.Size(768, 408);
+            this.Enter_Data.TabIndex = 2;
+            this.Enter_Data.Text = "Ввод экспериментальных данных";
+            this.Enter_Data.UseVisualStyleBackColor = true;
             // 
             // substancesTableAdapter
             // 
             this.substancesTableAdapter.ClearBeforeFill = true;
+            // 
+            // dgvEnterData
+            // 
+            this.dgvEnterData.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.dgvEnterData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEnterData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dgvEnterData.Location = new System.Drawing.Point(6, 6);
+            this.dgvEnterData.Name = "dgvEnterData";
+            this.dgvEnterData.RowHeadersWidth = 51;
+            this.dgvEnterData.RowTemplate.Height = 24;
+            this.dgvEnterData.Size = new System.Drawing.Size(756, 342);
+            this.dgvEnterData.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Exp id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Solubility";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Temperature";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Pressure";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 125;
+            // 
+            // cbSubstancesNameEntrerData
+            // 
+            this.cbSubstancesNameEntrerData.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cbSubstancesNameEntrerData.DisplayMember = "Name";
+            this.cbSubstancesNameEntrerData.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubstancesNameEntrerData.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbSubstancesNameEntrerData.FormattingEnabled = true;
+            this.cbSubstancesNameEntrerData.Location = new System.Drawing.Point(232, 366);
+            this.cbSubstancesNameEntrerData.Name = "cbSubstancesNameEntrerData";
+            this.cbSubstancesNameEntrerData.Size = new System.Drawing.Size(360, 24);
+            this.cbSubstancesNameEntrerData.TabIndex = 6;
+            this.cbSubstancesNameEntrerData.ValueMember = "Id";
+            // 
+            // btnEnterData
+            // 
+            this.btnEnterData.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnEnterData.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEnterData.Location = new System.Drawing.Point(7, 355);
+            this.btnEnterData.Name = "btnEnterData";
+            this.btnEnterData.Size = new System.Drawing.Size(164, 47);
+            this.btnEnterData.TabIndex = 5;
+            this.btnEnterData.Text = "Показать значения растворимости";
+            this.btnEnterData.UseVisualStyleBackColor = false;
             // 
             // Full_Table
             // 
@@ -255,28 +347,30 @@ namespace Interface_for_BD
             this.Name = "Full_Table";
             this.Text = "База данных";
             this.Load += new System.EventHandler(this.Full_Table_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Full_Table_View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDescriptorsView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.substancesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dB_Descriptors_1DataSet)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Exp_view)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExperimentsView)).EndInit();
+            this.Enter_Data.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEnterData)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView Full_Table_View;
-        private Button btn_table_view;
+        private System.Windows.Forms.DataGridView dgvDescriptorsView;
+        private Button btnTableView;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Name_of_descriptor;
         private DataGridViewTextBoxColumn Value;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private DataGridView Exp_view;
+        private DataGridView dgvExperimentsView;
         private DataGridViewTextBoxColumn Exp_Id;
         private DB_Descriptors_1DataSet dB_Descriptors_1DataSet;
         private BindingSource substancesBindingSource;
@@ -284,8 +378,16 @@ namespace Interface_for_BD
         private DataGridViewTextBoxColumn Solubility;
         private DataGridViewTextBoxColumn Temperature;
         private DataGridViewTextBoxColumn Pressure;
-        private Button btn_table_view_2;
-        private ComboBox cb_sub_name_2;
-        private ComboBox cb_sub_name;
+        private Button btnViewCharacteristics;
+        private ComboBox cbSubstancesNameDesc;
+        private ComboBox cbSubstancesNameExp;
+        private TabPage Enter_Data;
+        private DataGridView dgvEnterData;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private ComboBox cbSubstancesNameEntrerData;
+        private Button btnEnterData;
     }
 }
