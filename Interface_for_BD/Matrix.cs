@@ -12,13 +12,10 @@ namespace Interface_for_BD
     public class Matrix
     {
         public double[,] matrixBase;
-
         public Matrix(double[,] matrixBase)
         {
             this.matrixBase = matrixBase;
         }
-
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -126,7 +123,6 @@ namespace Interface_for_BD
 
             return m;
         }
-
 
         /// <summary>
         /// Transporate matrix.

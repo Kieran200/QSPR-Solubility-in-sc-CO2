@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Office.Interop.Excel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+using System.Runtime.CompilerServices;
 
 namespace Interface_for_BD
 {
@@ -35,24 +35,27 @@ namespace Interface_for_BD
             SubAdd();
             cbSelection.Text = cbSelection.Items[4].ToString();
         }
+
+        /// <summary>
+        /// Кнопка добавления общих доступных дескрипторов в поле
+        /// </summary>
         private void btnAddSubstances_Click(object sender, EventArgs e)
         {
             DescAdd();
         }
 
         /// <summary>
-        /// ВЫБОР ДЕСКРИПТОРОВ И РАСЧЕТ УРАВНЕНИЯ
+        /// Расчет уравнения в соответствии с выбранными дескрипторами при помощи множественной линейной регрессии
         /// </summary>
-
-        private void but_eqs_Click(object sender, EventArgs e)
+        private void btnCalculateEquation_Click(object sender, EventArgs e)
         {
             List<double> coefList = new List<double>();
             SqlConnection connection = new SqlConnection("Server=KIERAN; Database=DB_Descriptors_1;Trusted_Connection=True; MultipleActiveResultSets=True");
             connection.Open();
-            for (int i = 0; i < cLB_sub.CheckedItems.Count; i++)
+            for (int i = 0; i < clbSubstances.CheckedItems.Count; i++)
             {
                 //добавляем давление, температуру и растворимость iго вещества
-                string count_query = string.Format("SELECT COUNT(*) FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791'", ((Substances)cLB_sub.CheckedItems[i]).Id);
+                string count_query = string.Format("SELECT COUNT(*) FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791'", ((Substances)clbSubstances.CheckedItems[i]).Id);
                 SqlCommand command = new SqlCommand(count_query, connection);
                 SqlDataReader reader = command.ExecuteReader();
                 int count = 0;
@@ -69,8 +72,9 @@ namespace Interface_for_BD
                 {
                     if (k < count * ratio)
                     {
+
                         List<double> Values = new List<double>();
-                        string query_check = string.Format("SELECT TOP({1}) Points.Pressure, Points.Temperature, Points.Value, Density.Value FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791' EXCEPT SELECT TOP({2}) Points.Pressure, Points.Temperature, Points.Value, Density.Value FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791'", ((Substances)cLB_sub.CheckedItems[i]).Id, k, k - 1);
+                        string query_check = string.Format("SELECT TOP({1}) Points.Pressure, Points.Temperature, Points.Value, Density.Value FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791' EXCEPT SELECT TOP({2}) Points.Pressure, Points.Temperature, Points.Value, Density.Value FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791'", ((Substances)clbSubstances.CheckedItems[i]).Id, k, k - 1);
                         SqlCommand command3 = new SqlCommand(query_check, connection);
                         SqlDataReader reader3 = command3.ExecuteReader();
                         if (reader3.HasRows)
@@ -81,9 +85,9 @@ namespace Interface_for_BD
                                 if (Convert.ToDouble(reader3.GetValue(2)) > 0.00000001)
                                 {
                                     //добавляем дескрипторы для iго вещества
-                                    for (int j = 0; j < cLB_Desc.CheckedItems.Count; j++)
+                                    for (int j = 0; j < clbDescriptors.CheckedItems.Count; j++)
                                     {
-                                        string query = string.Format("SELECT TOP(1) DescriptorsDictionary.Value FROM  Descriptors, Substances, DescriptorsDictionary WHERE {0} = DescriptorsDictionary.DescriptorId AND {1} = DescriptorsDictionary.SubstanceId", ((Descriptors)cLB_Desc.CheckedItems[j]).Id, ((Substances)cLB_sub.CheckedItems[i]).Id);
+                                        string query = string.Format("SELECT TOP(1) DescriptorsDictionary.Value FROM  Descriptors, Substances, DescriptorsDictionary WHERE {0} = DescriptorsDictionary.DescriptorId AND {1} = DescriptorsDictionary.SubstanceId", ((Descriptors)clbDescriptors.CheckedItems[j]).Id, ((Substances)clbSubstances.CheckedItems[i]).Id);
                                         SqlCommand command4 = new SqlCommand(query, connection);
                                         SqlDataReader reader4 = command4.ExecuteReader();
                                         if (reader4.HasRows)
@@ -95,8 +99,8 @@ namespace Interface_for_BD
                                         }
                                         if (i == 0 && k == 1)
                                         {
-                                            LDesc.Add(((Descriptors)cLB_Desc.CheckedItems[j]).Id.ToString());
-                                            LDescName.Add(((Descriptors)cLB_Desc.CheckedItems[j]).Name.ToString());
+                                            LDesc.Add(((Descriptors)clbDescriptors.CheckedItems[j]).Id.ToString());
+                                            LDescName.Add(((Descriptors)clbDescriptors.CheckedItems[j]).Name.ToString());
                                         }
                                     }
                                     //добавление плотности, температуры и растворимости
@@ -116,7 +120,7 @@ namespace Interface_for_BD
                     else
                     {
                         List<double> Values = new List<double>();
-                        string query_check = string.Format("SELECT TOP({1}) Points.Pressure, Points.Temperature, Points.Value, Density.Value FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791' EXCEPT SELECT TOP({2}) Points.Pressure, Points.Temperature, Points.Value, Density.Value FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791'", ((Substances)cLB_sub.CheckedItems[i]).Id, k, k - 1);
+                        string query_check = string.Format("SELECT TOP({1}) Points.Pressure, Points.Temperature, Points.Value, Density.Value FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791' EXCEPT SELECT TOP({2}) Points.Pressure, Points.Temperature, Points.Value, Density.Value FROM Experiments, Points, Substances, Density WHERE Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Substances.Id = {0} AND  Density.Temperature = Points.Temperature AND Density.Pressure = Points.Pressure AND Density.SubstanceId = '4791'", ((Substances)clbSubstances.CheckedItems[i]).Id, k, k - 1);
                         SqlCommand command3 = new SqlCommand(query_check, connection);
                         SqlDataReader reader3 = command3.ExecuteReader();
                         if (reader3.HasRows)
@@ -127,9 +131,9 @@ namespace Interface_for_BD
                                 if (Convert.ToDouble(reader3.GetValue(2)) > 0.00000001)
                                 {
                                     //добавляем дескрипторы для iго вещества
-                                    for (int j = 0; j < cLB_Desc.CheckedItems.Count; j++)
+                                    for (int j = 0; j < clbDescriptors.CheckedItems.Count; j++)
                                     {
-                                        string query = string.Format("SELECT TOP(1) DescriptorsDictionary.Value FROM  Descriptors, Substances, DescriptorsDictionary WHERE {0} = DescriptorsDictionary.DescriptorId AND {1} = DescriptorsDictionary.SubstanceId", ((Descriptors)cLB_Desc.CheckedItems[j]).Id, ((Substances)cLB_sub.CheckedItems[i]).Id);
+                                        string query = string.Format("SELECT TOP(1) DescriptorsDictionary.Value FROM  Descriptors, Substances, DescriptorsDictionary WHERE {0} = DescriptorsDictionary.DescriptorId AND {1} = DescriptorsDictionary.SubstanceId", ((Descriptors)clbDescriptors.CheckedItems[j]).Id, ((Substances)clbSubstances.CheckedItems[i]).Id);
                                         SqlCommand command4 = new SqlCommand(query, connection);
                                         SqlDataReader reader4 = command4.ExecuteReader();
                                         if (reader4.HasRows)
@@ -141,8 +145,8 @@ namespace Interface_for_BD
                                         }
                                         if (i == 0 && k == 1)
                                         {
-                                            LDesc.Add(((Descriptors)cLB_Desc.CheckedItems[j]).Id.ToString());
-                                            LDescName.Add(((Descriptors)cLB_Desc.CheckedItems[j]).Name.ToString());
+                                            LDesc.Add(((Descriptors)clbDescriptors.CheckedItems[j]).Id.ToString());
+                                            LDescName.Add(((Descriptors)clbDescriptors.CheckedItems[j]).Name.ToString());
                                         }
                                     }
                                     //добавление плотности, температуры и растворимости
@@ -188,27 +192,25 @@ namespace Interface_for_BD
 
 
         /// <summary>
-        /// ДОБАВЛЕНИЕ УРАВНЕНИЯ В ОКНО
+        /// Добавление финального уравнения в окно
         /// </summary>
         private void Fin_Part()
         {
             equation = "";
-
-
             if (FinalCoefList.Count > 3)
                 for (int i = 0; i < FinalCoefList.Count - 3; i++)
                     equation += (Convert.ToString(FinalCoefList[i]) + " * d" + Convert.ToString(i + 1) + " + ");
             equation += (FinalCoefList[FinalCoefList.Count - 3] + " * ln(p)" + " + ");
             equation += (FinalCoefList[FinalCoefList.Count - 2] + " * 1/T");
             equation += FinalCoefList[FinalCoefList.Count - 1];
-            rTB_Fin_Eq.Text = equation;
+            rtbFinalEquation.Text = equation;
             FinalCoefListFull.Add(FinalCoefList);
         }
-
+        
         /// <summary>
-        /// ДОБАВЛЕНИЕ В ЭКСЕЛЬ
+        /// Перенос данных в эксель
         /// </summary>
-        private void Btn_Plot_Click(object sender, EventArgs e)
+        private void btnExcelPlot_Click(object sender, EventArgs e)
         {
             Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
             ExcelApp.Application.Workbooks.Add(Type.Missing);
@@ -266,7 +268,9 @@ namespace Interface_for_BD
             ExcelApp.Visible = true;
         }
 
-        //классы, используемые для создание чек-лист боксов
+        /// <summary>
+        /// Класс, используемый для создание чек-лист боксов
+        /// </summary>
         class Descriptors
         {
             public int Id { get; set; }
@@ -276,6 +280,9 @@ namespace Interface_for_BD
                 return Name;
             }
         }
+        /// <summary>
+        /// Класс, используемый для создание чек-лист боксов
+        /// </summary>
         class Substances
         {
             public int Id { get; set; }
@@ -288,41 +295,51 @@ namespace Interface_for_BD
 
         public RichTextBox getRichTextBox()
         {
-            return rTB_Fin_Eq;
+            return rtbFinalEquation;
         }
 
-        private void btn_clear_sublist_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Очищает список выбранных веществ
+        /// </summary>
+        private void btnClearSublist_Click(object sender, EventArgs e)
         {
-            //очистка от выделенных веществ
-            cLB_sub.Items.Clear();
+            clbSubstances.Items.Clear();
             SubAdd();
-            cLB_sub.ClearSelected();
+            clbSubstances.ClearSelected();
             LSub.Clear();
             LSubName.Clear();
-            cLB_Desc.Items.Clear();
+            clbDescriptors.Items.Clear();
             DescClear();
         }
 
-        private void btn_clear_desclist_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Очищает список выбранных дескрипторов без удаления выбранных веществ
+        /// </summary>
+        private void btnClearDesclist_Click(object sender, EventArgs e)
         {
             DescClear();
-            DescAdd();
+            if (clbSubstances.CheckedItems != null) 
+                DescAdd();
         }
+
+        /// <summary>
+        /// Очищает список выбранных дескрипторов
+        /// </summary>
         public void DescClear()
         {
             //очистка от дескрипторов и расчетных данных
-            cLB_Desc.Items.Clear();
-            cLB_Desc.ClearSelected();
+            clbDescriptors.Items.Clear();
+            clbDescriptors.ClearSelected();
             ValuesFull.Clear();
             SolubFull.Clear();
             ValuesFullExcel.Clear();
             SolubFullExcel.Clear();
             FinalCoefList.Clear();
             FinalCoefListFull.Clear();
-            rTB_Fin_Eq.Clear();
+            rtbFinalEquation.Clear();
         }
         /// <summary>
-        /// ДОБАВЛЕНИЕ ДЕКСРИПТОРОВ В ПОЛЕ
+        /// Добавление дескрипторов в поле
         /// </summary>
         public void DescAdd()
         {
@@ -330,13 +347,13 @@ namespace Interface_for_BD
             connection.Open();
             //сбор всех общих дескрипторов выбранных веществ
             List<List<string>> desc_List = new List<List<string>>();
-            for (int i = 0; i < cLB_sub.CheckedItems.Count; i++)
+            for (int i = 0; i < clbSubstances.CheckedItems.Count; i++)
             {
                 List<string> desc = new List<string>();
                 desc_List.Add(desc);
-                LSub.Add(((Substances)cLB_sub.CheckedItems[i]).Id.ToString());
-                LSubName.Add(((Substances)cLB_sub.CheckedItems[i]).Name.ToString());
-                string query_for_desc = string.Format("SELECT DISTINCT Descriptors.Id FROM Descriptors, DescriptorsDictionary, Substances, Points, Experiments WHERE Descriptors.Id = DescriptorsDictionary.DescriptorId AND Substances.Id = DescriptorsDictionary.SubstanceId AND Substances.Id = {0} AND DescriptorsDictionary.Value != 0 AND Points.Value != 0 AND  Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Descriptors.Name IS NOT NULL", ((Substances)cLB_sub.CheckedItems[i]).Id.ToString());
+                LSub.Add(((Substances)clbSubstances.CheckedItems[i]).Id.ToString());
+                LSubName.Add(((Substances)clbSubstances.CheckedItems[i]).Name.ToString());
+                string query_for_desc = string.Format("SELECT DISTINCT Descriptors.Id FROM Descriptors, DescriptorsDictionary, Substances, Points, Experiments WHERE Descriptors.Id = DescriptorsDictionary.DescriptorId AND Substances.Id = DescriptorsDictionary.SubstanceId AND Substances.Id = {0} AND DescriptorsDictionary.Value != 0 AND Points.Value != 0 AND  Points.ExperimentId = Experiments.Id AND Experiments.SubstanceId = Substances.Id AND Descriptors.Name IS NOT NULL", ((Substances)clbSubstances.CheckedItems[i]).Id.ToString());
                 SqlCommand command1 = new SqlCommand(query_for_desc, connection);
                 SqlDataReader reader1 = command1.ExecuteReader();
                 if (reader1.HasRows)
@@ -374,14 +391,15 @@ namespace Interface_for_BD
                     }
                 }
                 Descriptors desc = new Descriptors() { Id = Convert.ToInt32(desc_List[0][i]), Name = name };
-                cLB_Desc.Items.Add(desc);
+                clbDescriptors.Items.Add(desc);
                 reader2.Close();
             }
             connection.Close();
             desc_List.Clear();
         }
+
         /// <summary>
-        /// ДОБАВЛЕНИЕ ВЕЩЕСТВ В ПОЛЕ
+        /// Добавление веществ в поле
         /// </summary>
         public void SubAdd()
         {
@@ -395,7 +413,7 @@ namespace Interface_for_BD
                 while (reader.Read())
                 {
                     Substances sub = new Substances() { Id = Convert.ToInt32(reader.GetValue(1)), Name = Convert.ToString(reader.GetValue(0)) };
-                    cLB_sub.Items.Add(sub);
+                    clbSubstances.Items.Add(sub);
                 }
             }
             reader.Close();
@@ -405,6 +423,5 @@ namespace Interface_for_BD
         { 
             ratio = Convert.ToDouble(cbSelection.Text.Substring(0, cbSelection.Text.Length - 3))/100;
         }
-
     }
 }

@@ -33,18 +33,18 @@ namespace Interface_for_BD
             this.substancesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dB_Descriptors_1DataSet = new Interface_for_BD.DB_Descriptors_1DataSet();
             this.substancesTableAdapter = new Interface_for_BD.DB_Descriptors_1DataSetTableAdapters.SubstancesTableAdapter();
-            this.cLB_sub = new System.Windows.Forms.CheckedListBox();
-            this.cLB_Desc = new System.Windows.Forms.CheckedListBox();
+            this.clbSubstances = new System.Windows.Forms.CheckedListBox();
+            this.clbDescriptors = new System.Windows.Forms.CheckedListBox();
             this.btnAddSubstances = new System.Windows.Forms.Button();
-            this.but_eqs = new System.Windows.Forms.Button();
+            this.btnCalculateEquation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.rTB_Fin_Eq = new System.Windows.Forms.RichTextBox();
+            this.rtbFinalEquation = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Btn_Plot = new System.Windows.Forms.Button();
+            this.btnExcelPlot = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.btn_clear_sublist = new System.Windows.Forms.Button();
-            this.btn_clear_desclist = new System.Windows.Forms.Button();
+            this.btnСlearSublist = new System.Windows.Forms.Button();
+            this.btnClearDesclist = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cbSelection = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.substancesBindingSource)).BeginInit();
@@ -65,32 +65,32 @@ namespace Interface_for_BD
             // 
             this.substancesTableAdapter.ClearBeforeFill = true;
             // 
-            // cLB_sub
+            // clbSubstances
             // 
-            this.cLB_sub.AllowDrop = true;
-            this.cLB_sub.BackColor = System.Drawing.Color.GhostWhite;
-            this.cLB_sub.CheckOnClick = true;
-            this.cLB_sub.FormattingEnabled = true;
-            this.cLB_sub.Items.AddRange(new object[] {
+            this.clbSubstances.AllowDrop = true;
+            this.clbSubstances.BackColor = System.Drawing.Color.GhostWhite;
+            this.clbSubstances.CheckOnClick = true;
+            this.clbSubstances.FormattingEnabled = true;
+            this.clbSubstances.Items.AddRange(new object[] {
             ""});
-            this.cLB_sub.Location = new System.Drawing.Point(43, 25);
-            this.cLB_sub.Name = "cLB_sub";
-            this.cLB_sub.Size = new System.Drawing.Size(371, 191);
-            this.cLB_sub.TabIndex = 40;
+            this.clbSubstances.Location = new System.Drawing.Point(43, 25);
+            this.clbSubstances.Name = "clbSubstances";
+            this.clbSubstances.Size = new System.Drawing.Size(371, 191);
+            this.clbSubstances.TabIndex = 40;
             // 
-            // cLB_Desc
+            // clbDescriptors
             // 
-            this.cLB_Desc.AllowDrop = true;
-            this.cLB_Desc.BackColor = System.Drawing.Color.GhostWhite;
-            this.cLB_Desc.CheckOnClick = true;
-            this.cLB_Desc.FormattingEnabled = true;
-            this.cLB_Desc.Items.AddRange(new object[] {
+            this.clbDescriptors.AllowDrop = true;
+            this.clbDescriptors.BackColor = System.Drawing.Color.GhostWhite;
+            this.clbDescriptors.CheckOnClick = true;
+            this.clbDescriptors.FormattingEnabled = true;
+            this.clbDescriptors.Items.AddRange(new object[] {
             ""});
-            this.cLB_Desc.Location = new System.Drawing.Point(438, 25);
-            this.cLB_Desc.Name = "cLB_Desc";
-            this.cLB_Desc.Size = new System.Drawing.Size(369, 191);
-            this.cLB_Desc.TabIndex = 41;
-            this.cLB_Desc.Tag = "";
+            this.clbDescriptors.Location = new System.Drawing.Point(438, 25);
+            this.clbDescriptors.Name = "clbDescriptors";
+            this.clbDescriptors.Size = new System.Drawing.Size(369, 191);
+            this.clbDescriptors.TabIndex = 41;
+            this.clbDescriptors.Tag = "";
             // 
             // btnAddSubstances
             // 
@@ -104,17 +104,17 @@ namespace Interface_for_BD
             this.btnAddSubstances.UseVisualStyleBackColor = false;
             this.btnAddSubstances.Click += new System.EventHandler(this.btnAddSubstances_Click);
             // 
-            // but_eqs
+            // btnCalculateEquation
             // 
-            this.but_eqs.BackColor = System.Drawing.Color.AliceBlue;
-            this.but_eqs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.but_eqs.Location = new System.Drawing.Point(438, 235);
-            this.but_eqs.Name = "but_eqs";
-            this.but_eqs.Size = new System.Drawing.Size(179, 43);
-            this.but_eqs.TabIndex = 45;
-            this.but_eqs.Text = "Рассчитать уравнение";
-            this.but_eqs.UseVisualStyleBackColor = false;
-            this.but_eqs.Click += new System.EventHandler(this.but_eqs_Click);
+            this.btnCalculateEquation.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnCalculateEquation.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCalculateEquation.Location = new System.Drawing.Point(438, 235);
+            this.btnCalculateEquation.Name = "btnCalculateEquation";
+            this.btnCalculateEquation.Size = new System.Drawing.Size(179, 43);
+            this.btnCalculateEquation.TabIndex = 45;
+            this.btnCalculateEquation.Text = "Рассчитать уравнение";
+            this.btnCalculateEquation.UseVisualStyleBackColor = false;
+            this.btnCalculateEquation.Click += new System.EventHandler(this.btnCalculateEquation_Click);
             // 
             // label1
             // 
@@ -134,13 +134,13 @@ namespace Interface_for_BD
             this.label2.TabIndex = 47;
             this.label2.Text = "Выбор веществ";
             // 
-            // rTB_Fin_Eq
+            // rtbFinalEquation
             // 
-            this.rTB_Fin_Eq.Location = new System.Drawing.Point(43, 316);
-            this.rTB_Fin_Eq.Name = "rTB_Fin_Eq";
-            this.rTB_Fin_Eq.Size = new System.Drawing.Size(764, 91);
-            this.rTB_Fin_Eq.TabIndex = 49;
-            this.rTB_Fin_Eq.Text = "";
+            this.rtbFinalEquation.Location = new System.Drawing.Point(43, 316);
+            this.rtbFinalEquation.Name = "rtbFinalEquation";
+            this.rtbFinalEquation.Size = new System.Drawing.Size(764, 91);
+            this.rtbFinalEquation.TabIndex = 49;
+            this.rtbFinalEquation.Text = "";
             // 
             // label4
             // 
@@ -151,17 +151,17 @@ namespace Interface_for_BD
             this.label4.TabIndex = 50;
             this.label4.Text = "Финальное уравнение";
             // 
-            // Btn_Plot
+            // btnExcelPlot
             // 
-            this.Btn_Plot.BackColor = System.Drawing.Color.AliceBlue;
-            this.Btn_Plot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn_Plot.Location = new System.Drawing.Point(271, 413);
-            this.Btn_Plot.Name = "Btn_Plot";
-            this.Btn_Plot.Size = new System.Drawing.Size(271, 40);
-            this.Btn_Plot.TabIndex = 51;
-            this.Btn_Plot.Text = "График отклонения результатов";
-            this.Btn_Plot.UseVisualStyleBackColor = false;
-            this.Btn_Plot.Click += new System.EventHandler(this.Btn_Plot_Click);
+            this.btnExcelPlot.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnExcelPlot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExcelPlot.Location = new System.Drawing.Point(271, 413);
+            this.btnExcelPlot.Name = "btnExcelPlot";
+            this.btnExcelPlot.Size = new System.Drawing.Size(271, 40);
+            this.btnExcelPlot.TabIndex = 51;
+            this.btnExcelPlot.Text = "График отклонения результатов";
+            this.btnExcelPlot.UseVisualStyleBackColor = false;
+            this.btnExcelPlot.Click += new System.EventHandler(this.btnExcelPlot_Click);
             // 
             // label6
             // 
@@ -171,29 +171,29 @@ namespace Interface_for_BD
             this.label6.Size = new System.Drawing.Size(0, 16);
             this.label6.TabIndex = 53;
             // 
-            // btn_clear_sublist
+            // btnСlearSublist
             // 
-            this.btn_clear_sublist.BackColor = System.Drawing.Color.AliceBlue;
-            this.btn_clear_sublist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_clear_sublist.Location = new System.Drawing.Point(235, 235);
-            this.btn_clear_sublist.Name = "btn_clear_sublist";
-            this.btn_clear_sublist.Size = new System.Drawing.Size(179, 43);
-            this.btn_clear_sublist.TabIndex = 54;
-            this.btn_clear_sublist.Text = "Очистить список веществ";
-            this.btn_clear_sublist.UseVisualStyleBackColor = false;
-            this.btn_clear_sublist.Click += new System.EventHandler(this.btn_clear_sublist_Click);
+            this.btnСlearSublist.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnСlearSublist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnСlearSublist.Location = new System.Drawing.Point(235, 235);
+            this.btnСlearSublist.Name = "btnСlearSublist";
+            this.btnСlearSublist.Size = new System.Drawing.Size(179, 43);
+            this.btnСlearSublist.TabIndex = 54;
+            this.btnСlearSublist.Text = "Очистить список веществ";
+            this.btnСlearSublist.UseVisualStyleBackColor = false;
+            this.btnСlearSublist.Click += new System.EventHandler(this.btnClearSublist_Click);
             // 
-            // btn_clear_desclist
+            // btnClearDesclist
             // 
-            this.btn_clear_desclist.BackColor = System.Drawing.Color.AliceBlue;
-            this.btn_clear_desclist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_clear_desclist.Location = new System.Drawing.Point(628, 235);
-            this.btn_clear_desclist.Name = "btn_clear_desclist";
-            this.btn_clear_desclist.Size = new System.Drawing.Size(179, 43);
-            this.btn_clear_desclist.TabIndex = 55;
-            this.btn_clear_desclist.Text = "Очистить список дескрипторов";
-            this.btn_clear_desclist.UseVisualStyleBackColor = false;
-            this.btn_clear_desclist.Click += new System.EventHandler(this.btn_clear_desclist_Click);
+            this.btnClearDesclist.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnClearDesclist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClearDesclist.Location = new System.Drawing.Point(628, 235);
+            this.btnClearDesclist.Name = "btnClearDesclist";
+            this.btnClearDesclist.Size = new System.Drawing.Size(179, 43);
+            this.btnClearDesclist.TabIndex = 55;
+            this.btnClearDesclist.Text = "Очистить список дескрипторов";
+            this.btnClearDesclist.UseVisualStyleBackColor = false;
+            this.btnClearDesclist.Click += new System.EventHandler(this.btnClearDesclist_Click);
             // 
             // label3
             // 
@@ -232,18 +232,18 @@ namespace Interface_for_BD
             this.ClientSize = new System.Drawing.Size(858, 569);
             this.Controls.Add(this.cbSelection);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btn_clear_desclist);
-            this.Controls.Add(this.btn_clear_sublist);
+            this.Controls.Add(this.btnClearDesclist);
+            this.Controls.Add(this.btnСlearSublist);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.Btn_Plot);
+            this.Controls.Add(this.btnExcelPlot);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.rTB_Fin_Eq);
+            this.Controls.Add(this.rtbFinalEquation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.but_eqs);
+            this.Controls.Add(this.btnCalculateEquation);
             this.Controls.Add(this.btnAddSubstances);
-            this.Controls.Add(this.cLB_Desc);
-            this.Controls.Add(this.cLB_sub);
+            this.Controls.Add(this.clbDescriptors);
+            this.Controls.Add(this.clbSubstances);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Equation";
@@ -259,18 +259,18 @@ namespace Interface_for_BD
         private DB_Descriptors_1DataSet dB_Descriptors_1DataSet;
         private System.Windows.Forms.BindingSource substancesBindingSource;
         private DB_Descriptors_1DataSetTableAdapters.SubstancesTableAdapter substancesTableAdapter;
-        private System.Windows.Forms.CheckedListBox cLB_sub;
-        private System.Windows.Forms.CheckedListBox cLB_Desc;
+        private System.Windows.Forms.CheckedListBox clbSubstances;
+        private System.Windows.Forms.CheckedListBox clbDescriptors;
         private System.Windows.Forms.Button btnAddSubstances;
-        private System.Windows.Forms.Button but_eqs;
+        private System.Windows.Forms.Button btnCalculateEquation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox rTB_Fin_Eq;
+        private System.Windows.Forms.RichTextBox rtbFinalEquation;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button Btn_Plot;
+        private System.Windows.Forms.Button btnExcelPlot;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btn_clear_sublist;
-        private System.Windows.Forms.Button btn_clear_desclist;
+        private System.Windows.Forms.Button btnСlearSublist;
+        private System.Windows.Forms.Button btnClearDesclist;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbSelection;
     }
