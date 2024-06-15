@@ -35,5 +35,11 @@ namespace Interface_for_BD
             Equation eq = new Equation();
             eq.Show();
         }
+
+        private void btnCluster_Click(object sender, EventArgs e)
+        {
+            frmCluster cluster = new frmCluster();
+            cluster.Show();
+        }
     }
 }

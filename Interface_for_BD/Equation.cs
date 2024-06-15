@@ -224,17 +224,21 @@ namespace Interface_for_BD
             }
             ExcelApp.Cells[1, 1] = "Финальное уравнение";
 
-            if (FinalCoefListFull.Count > 3)
-                for (int j = 0; j < FinalCoefListFull[0].Count - 3; j++)
+            if (FinalCoefListFull.Count >= 3)
+                for (int j = 0; j < FinalCoefListFull[0].Count - 2; j++)
                 {
                     ExcelApp.Cells[2, j + 1] = string.Format("x(d{0})", j + 1);
                     ExcelApp.Cells[6, j + 1] = string.Format("d{0}", j + 1);
                 }
-            ExcelApp.Cells[2, FinalCoefListFull[0].Count - 2] = "x(1/p)";
-            ExcelApp.Cells[2, FinalCoefListFull[0].Count - 1] = "x(1/T)";
+            if(FinalCoefListFull.Count > 1)
+            {
+                ExcelApp.Cells[2, FinalCoefListFull[0].Count - 2] = "xp";
+                ExcelApp.Cells[2, FinalCoefListFull[0].Count - 1] = "x1/T";
+                ExcelApp.Cells[6, FinalCoefListFull[0].Count - 2] = "p";
+                ExcelApp.Cells[6, FinalCoefListFull[0].Count - 1] = "1/T";
+            }
+           
             ExcelApp.Cells[2, FinalCoefListFull[0].Count] = "Своб. член";
-            ExcelApp.Cells[6, FinalCoefListFull[0].Count - 2] = "p";
-            ExcelApp.Cells[6, FinalCoefListFull[0].Count - 1] = "1/T";
             ExcelApp.Cells[6, FinalCoefListFull[0].Count] = "Своб. член";
             ExcelApp.Cells[6, FinalCoefListFull[0].Count + 1] = "Растворимость экспериментальная";
             ExcelApp.Cells[6, FinalCoefListFull[0].Count + 2] = "Растворимость расчетная";

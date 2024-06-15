@@ -160,3 +160,4 @@ C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.pdb
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.Plot.resources
 C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.csproj.ResolveComReference.cache
+C:\Users\Анна\source\repos\Calc_of_Output_Parametrs_by_Structural_Properties-master\Interface_for_BD\obj\Debug\Interface_for_BD.frmCluster.resources

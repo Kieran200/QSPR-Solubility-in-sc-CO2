@@ -35,6 +35,7 @@ namespace Interface_for_BD
             this.descriptorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.descriptorsTableAdapter = new Interface_for_BD.DB_Descriptors_1DataSetTableAdapters.DescriptorsTableAdapter();
             this.Btn_2 = new System.Windows.Forms.Button();
+            this.btnCluster = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dB_Descriptors_1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.descriptorsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -72,12 +73,25 @@ namespace Interface_for_BD
             this.Btn_2.UseVisualStyleBackColor = false;
             this.Btn_2.Click += new System.EventHandler(this.Btn_2_Click);
             // 
+            // btnCluster
+            // 
+            this.btnCluster.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnCluster.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCluster.Location = new System.Drawing.Point(147, 177);
+            this.btnCluster.Name = "btnCluster";
+            this.btnCluster.Size = new System.Drawing.Size(174, 56);
+            this.btnCluster.TabIndex = 2;
+            this.btnCluster.Text = "Кластеризация";
+            this.btnCluster.UseVisualStyleBackColor = false;
+            this.btnCluster.Click += new System.EventHandler(this.btnCluster_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(476, 203);
+            this.ClientSize = new System.Drawing.Size(476, 266);
+            this.Controls.Add(this.btnCluster);
             this.Controls.Add(this.Btn_2);
             this.Controls.Add(this.Open_BD);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -97,6 +111,7 @@ namespace Interface_for_BD
         private System.Windows.Forms.BindingSource descriptorsBindingSource;
         private DB_Descriptors_1DataSetTableAdapters.DescriptorsTableAdapter descriptorsTableAdapter;
         private System.Windows.Forms.Button Btn_2;
+        private System.Windows.Forms.Button btnCluster;
     }
 }
 
